@@ -22,8 +22,3 @@ function movie_attachments(array &$page) {
 }
 
 
-function movies_node_view(array &$build, NodeInterface $node, $display, $view_mode) {
-  if ($node->getType() == 'movie' && $view_mode == 'full') {
-    $build['#cache']['max-age'] = 500;
-  }
-}

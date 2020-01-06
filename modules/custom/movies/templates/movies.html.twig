@@ -19,6 +19,15 @@
     .genreLink {
       color:white;
     }
+    .selected {
+      background-color: #82828c;
+    }
+    button:hover {
+      background-color: #8c8c8c;
+    }
+    select:hover {
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -80,7 +89,11 @@
 
   <p><b>Page:</b>
     {% for i in 1..numOfPages %}
-      <button name="search" value="{{ i }}">{{ i }}</button>
+      {% if i == selectedPage %}
+        <button name="search" class="selected" value="{{ i }}">{{ i }}</button>
+      {% else %}
+        <button name="search" value="{{ i }}">{{ i }}</button>
+      {% endif %}
     {% endfor %}
   </p>
 

@@ -72,15 +72,11 @@ class BookService
           $node->save();
           $myBooks[] = $newBook;
         }
-
       }
-
-
     }
     catch (RequestException $e) {
       return false;
     }
-
 
     return array(
       '#theme' => 'books',
@@ -111,7 +107,6 @@ class BookService
       $book = new Book($title,$isbn,$price,$myComments);
       $books[] = $book;
     }
-
 
     return $books;
   }
