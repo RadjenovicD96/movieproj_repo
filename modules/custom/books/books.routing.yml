@@ -1,0 +1,14 @@
+books.books:
+  path: '/books'
+  defaults:
+    _controller: '\Drupal\books\Controller\BookController::books'
+    _title: 'Our custom book list'
+  requirements:
+    _permission: 'access content'
+
+books.post:
+  path: 'api/book'
+  defaults: { _controller: '\Drupal\books\Controller\BookController::add' }
+  methods:  [POST]
+  requirements:
+    _access: 'TRUE'

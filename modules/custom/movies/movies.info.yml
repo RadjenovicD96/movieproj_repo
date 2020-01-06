@@ -1,0 +1,5 @@
+name:  movies
+type:  module
+description:  movie description
+package:  samp
+core:  8.x

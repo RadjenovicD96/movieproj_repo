@@ -1,0 +1,20 @@
+movies.movies:
+  path: '/movies'
+  defaults:
+    _controller: '\Drupal\movies\Controller\MovieController::movies'
+    _title: 'Our custom movie list'
+  requirements:
+    _permission: 'access content'
+movie_filter:
+  path: /movies/filter
+  defaults:
+    _controller: 'Drupal\movies\Controller\MovieController::filterMovies'
+  requirements:
+    _permission: 'access content'
+movie.settings:
+  path: '/movies/settings'
+  defaults:
+    _form: '\Drupal\movies\Form\PagingConfiguration'
+    _title: 'Page settings: '
+  requirements:
+    _permission: 'administer site configuration'

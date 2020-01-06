@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    img {
+      max-width: 128px;
+      height: auto;
+    }
+    tr {
+      background-color: #8e929c;
+      color: black;
+    }
+    th {
+      background-color: #6b6b6b;
+      color: white;
+    }
+    .genreLink {
+      color:white;
+    }
+  </style>
+</head>
+
+<body>
+
+<form method="POST" action="http://localhost/movieproj/movies/filter">
+
+  <p>{% trans %}Title:{% endtrans %}
+    <input name="title" type="text" value="{{ selectedFilter }}"/>
+  </p>
+
+  <p>{% trans %}Genre:{% endtrans %}
+    <select name="genre">
+      <option value="None">{% trans %}None{% endtrans %}</option>
+      {% for genre in genres %}
+        {% if genre.name == selectedGenre %}
+          <option value="{{ genre.name }}" selected>{{ genre.name }}</option>
+        {% else %}
+          <option value="{{ genre.name }}">{{ genre.name }}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </p>
+
+  <button name="search" value="1">Apply</button>
+
+  <hr/>
+
+{% if items | length > 0 %}
+<div>
+  <table class="table" style="width:100% ; border: 1px solid black;">
+    <tr>
+      <th style="border: 1px solid black;"><h3>{% trans %} Title: {% endtrans %} </h3></th>
+      <th style="border: 1px solid black;"><h3>{% trans %} Description: {% endtrans %}</h3></th>
+      <th style="border: 1px solid black;"><h3>Poster: </h3></th>
+      <th style="border: 1px solid black;"><h3>{% trans %} Genre: {% endtrans %}</h3></th>
+    </tr>
+
+
+    {% for movie in items %}
+
+      <tr>
+        <td style="border: 1px solid black;">{{ movie.title}}</td>
+        <td style="border: 1px solid black;">{{ movie.description | raw }}</td>
+        <td style="border: 1px solid black;"><img src="{{ movie.image}}"></td>
+        <td style="border: 1px solid black;">
+          {% for genre in movie.genres %}
+            <a class="genreLink" href="http://localhost/movieproj/{{ genre }}">{{ genre | trans }}</a>
+            <hr/>
+          {% endfor %}
+        </td>
+      </tr>
+
+    {% endfor %}
+
+  </table>
+
+  <hr/>
+
+  <p><b>Page:</b>
+    {% for i in 1..numOfPages %}
+      <button name="search" value="{{ i }}">{{ i }}</button>
+    {% endfor %}
+  </p>
+
+</div>
+{% else %}
+  <h3><i>No movies match your search</i></h3>
+{% endif %}
+
+</form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    tr {
+      background-color: #8e929c;
+      color: white;
+    }
+    th {
+      background-color: #6b6b6b;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<table class="table" style="width:100% ; border: 1px solid black;">
+  <tr>
+    <th style="border: 1px solid black;"><h3>{% trans %} Title: {% endtrans %} </h3></th>
+    <th style="border: 1px solid black;"><h3>{% trans %} Price: {% endtrans %}</h3></th>
+    <th style="border: 1px solid black;"><h3>ISBN: </h3></th>
+    <th style="border: 1px solid black;"><h3>{% trans %}Comments: {% endtrans %}</h3></th>
+  </tr>
+
+  {% for book in items %}
+
+    <tr>
+      <td style="border: 1px solid black;">{{ book.title}}</td>
+      <td style="border: 1px solid black;">{{ book.price}}$</td>
+      <td style="border: 1px solid black;">{{ book.isbn}}</td>
+      <td style="border: 1px solid black;">
+        {% for comment in book.comments %}
+          <p>{{ comment }}</p>
+          <hr/>
+        {% endfor %}
+      </td>
+    </tr>
+
+  {% endfor %}
+
+</table>
+
+
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @param $existing
+ * @param $type
+ * @param $theme
+ * @param $path
+ * @return array
+ * Implementing hook_theme
+ */
+function books_theme($existing, $type, $theme, $path) {
+
+  return array(
+    'books' => array(
+      'variables' => array('items' => array(), 'title' => '')
+    )
+  );
+}
