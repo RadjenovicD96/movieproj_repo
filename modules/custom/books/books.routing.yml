@@ -8,7 +8,8 @@ books.books:
 
 books.post:
   path: 'api/book'
-  defaults: { _controller: '\Drupal\books\Controller\BookController::add' }
+  defaults:
+    _controller: '\Drupal\books\Controller\BookController::add'
   methods:  [POST]
   requirements:
     _access: 'TRUE'

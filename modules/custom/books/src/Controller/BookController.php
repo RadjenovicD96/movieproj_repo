@@ -42,7 +42,4 @@ class BookController extends ControllerBase
   }
 
 
-
-
-
 }

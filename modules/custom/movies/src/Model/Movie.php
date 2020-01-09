@@ -19,6 +19,7 @@ class Movie
     $this->genres = $genres;
   }
 
+
   /**
    * @return array
    */

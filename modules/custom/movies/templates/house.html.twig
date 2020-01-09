@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    img {
+      max-width: 128px;
+      height: auto;
+    }
+    tr {
+      background-color: #8e929c;
+      color: black;
+    }
+    th {
+      background-color: #6b6b6b;
+      color: white;
+    }
+    .genreLink {
+      color:white;
+    }
+  </style>
+</head>
+
+<body>
+
+  {% if items | length > 0 %}
+    <div>
+      <table class="table" style="width:100% ; border: 1px solid black;">
+        <tr>
+          <th style="border: 1px solid black;"><h3>{% trans %} Title: {% endtrans %} </h3></th>
+          <th style="border: 1px solid black;"><h3>{% trans %} Description: {% endtrans %}</h3></th>
+          <th style="border: 1px solid black;"><h3>Poster: </h3></th>
+        </tr>
+
+        {% for movie in items %}
+          <tr>
+            <td style="border: 1px solid black;">{{ movie.title}}</td>
+            <td style="border: 1px solid black;">{{ movie.description | raw }}</td>
+            <td style="border: 1px solid black;"><img src="{{ movie.image}}"></td>
+          </tr>
+        {% endfor %}
+
+      </table>
+      <hr/>
+    </div>
+  {% else %}
+    <h3><i>No movies match your search</i></h3>
+  {% endif %}
+
+
+
+</body>
+
+</html>

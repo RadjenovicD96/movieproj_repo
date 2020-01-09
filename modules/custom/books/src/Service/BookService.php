@@ -17,7 +17,7 @@ class BookService
 
 
   /**
-   * BookController constructor.
+   * BookService constructor.
    */
   public function __construct($httpClient, $entityManager,$entityQuery)
   {

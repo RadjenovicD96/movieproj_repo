@@ -13,12 +13,14 @@ function movies_theme($existing, $type, $theme, $path) {
   return array(
     'movies' => array(
         'variables' => array('items' => array(), 'title' => '', 'genres' => array(), 'numOfPages' => 0, 'selectedGenre' => '', 'selectedFilter' => '', 'selectedPage' => '')
+    ),
+    'house' => array(
+      'variables' => array('title' => '', 'items' => array())
     )
   );
 }
 
+
 function movie_attachments(array &$page) {
   $page['#attached']['library'][] = 'movies/movies_css';
 }
-
-

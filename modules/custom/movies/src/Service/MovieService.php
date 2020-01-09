@@ -4,6 +4,7 @@ namespace Drupal\movies\Service;
 
 use Drupal\movies\Model\Movie;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Cache\CacheableMetadata;
 
 class MovieService
 {
@@ -15,7 +16,7 @@ class MovieService
 
 
   /**
-   * MovieController constructor.
+   * MovieService constructor.
    */
   public function __construct($entityManager,$entityQuery,$config)
   {
@@ -53,7 +54,7 @@ class MovieService
 
 
 
-  private function loadAllMovies() {
+  public function loadAllMovies() {
     $query = $this->entityQuery->condition('type', 'movie');
     $entity_ids = $query->execute();
     $movies = [];
@@ -62,6 +63,7 @@ class MovieService
     foreach ($nodes as $node){
       $title = $node->get('title')->value;
       $description = $node->get('field_description')->value;
+
 
       $genreNodes = $node->get('field_genre')->getValue();
       $genres = [];

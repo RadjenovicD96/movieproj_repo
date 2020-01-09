@@ -18,3 +18,4 @@ movie.settings:
     _title: 'Page settings: '
   requirements:
     _permission: 'administer site configuration'
+
